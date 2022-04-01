@@ -1,0 +1,67 @@
+<apex:page lightningStylesheets="true" standardController="Contact" extensions="ContactListViewExtension" recordSetVar="records" applyBodyTag="false">
+  <!--
+    @description Use this page for a List View Button on the Contacts Tab
+                  that will merge Contacts into Mailing Labels
+  -->
+  <apex:includeScript value="{! $Resource.Mambo__MamboMerge }" />
+  <apex:slds />
+  <apex:includeLightning />
+  <apex:form>
+    <apex:pageBlock>
+      <apex:pageBlockButtons location="top">
+        <apex:commandButton action="{!cancel}" value="Back" />
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+
+  <apex:pageMessages />
+  <div id="lightning" />
+
+  <script>
+    // TODO (REQUIRED): Please enter your template Id in the var below
+    const TEMPLATE_ID = "ContactListMailingLabels";
+
+    // TODO (REQUIRED): Please enter the # of labels per page in the var below
+    const LABELS_PER_PAGE = 10;
+
+    // TODO (OPTIONAL): Enable debug mode if things are working
+    const debugOn = true;
+
+    /*****  DO NOT CHANGE BELOW CODE *****/
+    let selectedRecordsString = '{!selectedRecordsString}';
+    selectedRecordsString = selectedRecordsString.replace(/\n/g, "\\n");
+    const selectedRecords = JSON.parse(selectedRecordsString);
+    const pages = [{}];
+    let currentLabel = 1;
+    for ( let i=0; i<selectedRecords.length; i++ ){
+      if ( currentLabel > LABELS_PER_PAGE ){
+        pages.push({});
+        currentLabel = 0;
+      }
+      pages[pages.length-1]['record'+currentLabel] = selectedRecords[i];
+      currentLabel++;
+    }
+    console.log(pages);
+    $Lightning.use("c:mamboMergeApp", function () {
+      $Lightning.createComponent(
+        "mambo:mamboMerge",
+        {
+          templateId: TEMPLATE_ID,
+          debug: debugOn,
+          mergeData: pages,
+        },
+        "lightning",
+        function (cmp, status, errorMessage) {
+          if (status === 'SUCCESS') {
+            setTimeout(
+              function () {
+                console.log("isSuccess", cmp.get('v.isSuccess'))
+              },
+              (5000)
+            );
+          }
+        }
+      );
+    });
+  </script>
+</apex:page>
