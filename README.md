@@ -11,7 +11,7 @@ This recipe will step you through creating a button for Contact List Views to ge
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
-3. Create a docx template that contains the {{cloneForEach:records}} mergeField anyone in the document. Within each label cell, use a merge field that looks like this {{records[x].FirstName}} where x is a number 1 through 10 (assuming 10 labels per page). 
+3. Create a docx template that contains the {{cloneForEach:pages}} mergeField anyone in the document. Within each label cell, use a merge field that looks like this {{records[x].FirstName}} where x is a number 1 through 10 (assuming 10 labels per page). 
 
 4. Upload your docx Template onto the Files tab by following these instructions: https://www.mambomerge.com/support/how-to-use-mambo-merge-to-generate-a-new-word-docx-file-drag-and-drop-copy/
 
