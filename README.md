@@ -6,7 +6,7 @@ This recipe will step you through creating a button for Contact List Views to ge
 1. Install Mambo Merge from the AppExchange by following these instructions: https://www.mambomerge.com/support/installation-from-appexchange/
 
 2. Use the below button to deploy this repo to your Salesforce to create a new Visualforce Page, new Aura App, and new Opportunity List View Button
-<a href="https://githubsfdeploy.herokuapp.com?owner=mambomerge&repo=contact-listview-batch-visualforce-recipe&ref=main">
+<a href="https://githubsfdeploy.herokuapp.com?owner=mambomerge&repo=contact-listview-mailing-labels-recipe&ref=main">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
