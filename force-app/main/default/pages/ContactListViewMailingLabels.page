@@ -48,7 +48,7 @@
         {
           templateId: TEMPLATE_ID,
           debug: debugOn,
-          mergeData: pages,
+          mergeData: [{pages:pages}],
         },
         "lightning",
         function (cmp, status, errorMessage) {
